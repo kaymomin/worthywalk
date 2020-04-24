@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="250dp"
+    android:layout_height="wrap_content"
+    android:background="@color/cardview_dark_background">
+
+        <TextView android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:text="FINISH WORKOUT"
+            android:textSize="20dp"
+            android:textColor="@color/colorAmber"
+            android:layout_gravity="center"/>
+    <com.google.android.gms.maps.MapView
+        android:padding="15dp"
+        xmlns:map="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/map"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+ />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:paddingLeft="15dp"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textSize="15dp"
+            android:text="STEPS"
+            android:textAlignment="textStart"
+
+            android:layout_weight="1"
+            android:textColor="@color/colorWhite"
+            android:padding="10dp"/>
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:id="@+id/stepsdialog"
+            android:layout_weight="1"
+            android:textAlignment="center"
+            android:text="0"
+            android:textColor="@color/colorWhite"
+            android:padding="10dp"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:paddingLeft="15dp"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:text="CALORIES"
+            android:textAlignment="textStart"
+            android:layout_weight="1"
+            android:textColor="@color/colorWhite"
+            android:padding="10dp"/>
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:id="@+id/coloriedialog"
+            android:layout_weight="1"
+            android:textAlignment="center"
+            android:text="0"
+            android:textColor="@color/colorWhite"
+            android:padding="10dp"/>
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:paddingLeft="15dp"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:text="DISTANCE"
+            android:textAlignment="textStart"
+            android:layout_weight="1"
+            android:textColor="@color/colorWhite"
+            android:padding="10dp"/>
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:id="@+id/distancedialog"
+
+            android:layout_weight="1"
+            android:textAlignment="center"
+            android:text="0"
+            android:textColor="@color/colorWhite"
+            android:padding="10dp"/>
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:paddingLeft="15dp"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:text="BONUS"
+            android:textAlignment="textStart"
+
+            android:layout_weight="1"
+            android:textColor="@color/colorWhite"
+            android:padding="10dp"/>
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:id="@+id/bonusdialog"
+            android:layout_weight="1"
+            android:textAlignment="center"
+            android:text="0"
+            android:textColor="@color/colorWhite"
+            android:padding="10dp"/>
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:text="DISCARDED DISTANCE"
+            android:textAlignment="textStart"
+            android:textColor="@color/red"
+            android:padding="10dp"/>
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:id="@+id/discardeddistance"
+            android:textAlignment="center"
+            android:text="0"
+            android:textColor="@color/red"
+            android:padding="10dp"/>
+
+
+    </LinearLayout>
+<View
+    android:layout_width="match_parent"
+    android:layout_height="2dp"
+    android:background="@color/colorWhite"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
+    />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:text="KNUBS"
+            android:textAlignment="center"
+
+            android:layout_weight="1"
+            android:textColor="@color/prog4"
+            android:padding="10dp"/>
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:id="@+id/knubsdialog"
+            android:layout_weight="1"
+            android:textAlignment="center"
+            android:text="0"
+            android:textColor="@color/prog4"
+            android:padding="10dp"/>
+
+
+    </LinearLayout>
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="FINISH"
+
+    android:layout_margin="20dp"
+    android:textColor="@color/colorWhite"
+    android:padding="10dp"
+    android:layout_gravity="end"
+    android:id="@+id/finishworkout"
+    />
+
+</LinearLayout>

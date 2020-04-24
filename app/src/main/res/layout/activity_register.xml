@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".register">
+
+
+    <RelativeLayout
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:enabled="false"
+        android:background="@drawable/gradient"
+        android:layout_height="55dp"
+        android:layout_width="match_parent"
+        android:elevation="10dp"
+        android:id="@+id/custom_actionbar_relative_layout_main" >
+
+
+
+        <TextView android:background="@android:color/transparent"
+            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:id="@+id/title"
+            android:textSize="18sp"
+            android:text="Enter User Details"
+            android:textColor="@android:color/white"
+            android:textAlignment="center"
+            android:gravity="center_vertical"
+            android:layout_centerVertical="true"
+            android:layout_centerInParent="true"/>
+
+    </RelativeLayout>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        app:layout_constraintTop_toBottomOf="@id/custom_actionbar_relative_layout_main"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:id="@+id/profile_image"
+        android:layout_width="96dp"
+        android:layout_height="96dp"
+        android:src="@drawable/ic_boy"
+        app:civ_border_width="2dp"
+        android:layout_below="@+id/custom_actionbar_relative_layout_main"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="15dp"
+        app:civ_border_color="@color/colorPrimary"/>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+
+        android:layout_width="wrap_content"
+        android:id="@+id/form"
+        android:layout_marginTop="10dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/profile_image"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+
+
+<EditText
+    android:layout_margin="10dp"
+    android:textAlignment="center"
+    android:id="@+id/firstname"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:hint="Enter First Name"
+    android:inputType="text"
+    android:background="@drawable/textbackground"
+    android:elevation="5dp"
+/>
+        <EditText
+            android:layout_margin="10dp"
+            android:textAlignment="center"
+            android:id="@+id/lastname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter Last Name"
+            android:inputType="text"
+            android:background="@drawable/textbackground"
+            android:elevation="5dp"
+
+
+            />
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+    <TextView
+        android:layout_width="50dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="5dp"
+        android:textSize="25sp"
+        android:layout_gravity="center"
+        android:text="+92"/>
+    <EditText
+        android:layout_margin="10dp"
+        android:textAlignment="center"
+        android:id="@+id/phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="phone"
+        android:hint="Enter Phone Number"
+        android:background="@drawable/textbackground"
+        android:elevation="5dp"
+        />
+
+</LinearLayout>
+
+        <LinearLayout
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+
+            android:orientation="horizontal"
+            android:id="@+id/spinnerlayout"
+            android:background="@drawable/textbackground"
+
+            >
+
+            <androidx.appcompat.widget.AppCompatSpinner
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:entries="@array/gender"
+    android:id="@+id/gender"
+
+    />
+        </LinearLayout>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/textbackground"
+            android:elevation="5dp"
+            android:hint="Height in ft"
+            android:id="@+id/height"
+            android:textAlignment="center"
+android:inputType="numberDecimal"
+
+            />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/textbackground"
+        android:elevation="5dp"
+        android:hint="Weight in kg"
+        android:inputType="numberDecimal"
+
+android:id="@+id/weight"
+
+        />
+
+</LinearLayout>
+
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+    >
+
+    <EditText
+        android:id="@+id/day"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_weight="1"
+        android:background="@drawable/textbackground"
+        android:hint="DD"
+
+        android:inputType="date"
+        android:textAlignment="center" />
+
+    <EditText
+        android:id="@+id/month"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+
+        android:layout_weight="1"
+        android:background="@drawable/textbackground"
+        android:hint="MM"
+        android:inputType="date"
+        android:textAlignment="center" />
+
+    <EditText
+        android:id="@+id/year"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_weight="3"
+        android:background="@drawable/textbackground"
+
+        android:hint="YYYY"
+        android:inputType="date"
+        android:textAlignment="center"
+
+        />
+
+
+</LinearLayout>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_margin="40dp"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/go"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_arrow_forward_black_24dp"
+        android:tint="@color/colorWhite"
+        android:backgroundTint="@color/colorPrimary"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/form"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>
