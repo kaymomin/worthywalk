@@ -1,30 +1,39 @@
 package worthywalk.example.com.worthywalk;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.Toolbar;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
+import android.provider.Settings.Secure;
 
 import com.facebook.login.LoginManager;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
 
-import java.util.List;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
+import worthywalk.example.com.worthywalk.Fragments.Leaderboardfrag;
+import worthywalk.example.com.worthywalk.Fragments.homeFragment;
+import worthywalk.example.com.worthywalk.Fragments.storefrag;
+import worthywalk.example.com.worthywalk.Models.User;
+import worthywalk.example.com.worthywalk.Utilities.Firebasedb;
 
 public class MainActivity extends AppCompatActivity implements storefrag.Updateuser {
-
+    ArrayList<String> mresources=new ArrayList<>();
     public static final String MyPREFERENCES = "MyPrefs" ;
+    String[] arr;
+    Firebasedb firebasedb;
     static SharedPreferences sharedpreferences;
 boolean start=false;
     //    private PermissionsManager permissionsManager;
@@ -48,6 +57,8 @@ LoginManager loginManager;
     private TextView title;
     String screen="Workout";
     static  Gson gson;
+    String[] array;
+    ArrayList<String> mResources=new ArrayList<>();
     public static User usermain=new User();
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -56,7 +67,9 @@ LoginManager loginManager;
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
           if(!start) {
+              screen="Dash Board";
               Fragment selectedfragment = new homeFragment(usermain);
+
 
               switch (item.getItemId()) {
                   case R.id.navigation_home:
@@ -69,10 +82,11 @@ LoginManager loginManager;
                       break;
                   case R.id.navigation_notifications:
                       screen = "Store";
-                      selectedfragment = new storefrag(usermain);
+                      selectedfragment = new storefrag(usermain, mResources);
                       break;
 
               }
+
               getSupportFragmentManager().beginTransaction().replace(R.id.fragment, selectedfragment).commit();
           }
             return true;
@@ -94,8 +108,25 @@ LoginManager loginManager;
             Toast.makeText(getApplicationContext(),"Login Error !",Toast.LENGTH_LONG).show();
 
         }
+
+
+        firebasedb=new Firebasedb();
+        mResources=firebasedb.getstoreads();
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment,new homeFragment(usermain)).commit();
         sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+        FirebaseMessaging.getInstance().subscribeToTopic("Worthywalk")
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        String msg = "Subscribed";
+                        if (!task.isSuccessful()) {
+                            msg ="Subscription failed";
+                        }
+                        Log.d("FCM", msg);
+//                        Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
+                    }
+                });
+
 
 
         setContentView(R.layout.activity_main);
@@ -112,6 +143,13 @@ LoginManager loginManager;
 
 }
 
+    void validlogin(){
+
+
+
+
+    }
+
     @Override
     public void updateuser(User user) {
         this.usermain=user;
@@ -119,7 +157,7 @@ LoginManager loginManager;
         SharedPreferences.Editor prefsEditor = sharedpreferences.edit();
         prefsEditor.putString("User",userjson);
         prefsEditor.commit();
-        this.getSupportFragmentManager().beginTransaction().replace(R.id.fragment,new storefrag(user)).commit();
+        this.getSupportFragmentManager().beginTransaction().replace(R.id.fragment,new storefrag(user,mResources)).commit();
     }
     public static void updateuserthroughactivity(User user) {
         usermain=user;
@@ -128,6 +166,7 @@ LoginManager loginManager;
         prefsEditor.putString("User",userjson);
         prefsEditor.commit();
     }
+
 
 //    @Override
 //    public void userupdate(User user) {

@@ -9,10 +9,10 @@ import android.os.IBinder;
 import android.os.SystemClock;
 import android.util.Log;
 import android.widget.Chronometer;
-import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
+import worthywalk.example.com.worthywalk.Models.User;
 
 import com.google.android.gms.maps.model.LatLng;
 
@@ -59,6 +59,7 @@ public class SensorForeground extends Service {
     public int onStartCommand(Intent intent, int flags, int startId) {
         sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
 
+
         user= (User) intent.getSerializableExtra("User");
         //do heavy work on a background thread
         //stopSelf();
@@ -78,13 +79,14 @@ public class SensorForeground extends Service {
 
             WalkActivity.getInstance().UpdateSensorTV(steps);
 
-            Intent notificationIntent = new Intent(this, WalkActivity.class);
+            Intent notificationIntent = new Intent(WalkActivity.getInstance(), WalkActivity.class);
+
             PendingIntent pendingIntent = PendingIntent.getActivity(this,0, notificationIntent, 0);
 
             Notification notification = new NotificationCompat.Builder(this, CHANNEL_ID)
-                    .setContentTitle("Walk Activity")
+                    .setContentTitle("Worthy walk is montoring your activity !")
                     .setContentIntent(pendingIntent)
-                    .setSmallIcon(R.drawable.ic_runer_silhouette_running_fast).build();
+                    .setSmallIcon(R.mipmap.ic_launcher).build();
 
             startForeground(101, notification);
 
@@ -108,6 +110,7 @@ public class SensorForeground extends Service {
     public void onDestroy() {
 
         super.onDestroy();
+
     }
 
     @Nullable
@@ -134,7 +137,12 @@ public class SensorForeground extends Service {
     }
 
     public static long getTime(){
+
         return chronometer.getBase();
+    }
+
+    public static long gettimespent(){
+       return SystemClock.elapsedRealtime()-chronometer.getBase();
     }
 
     // 2.5 steps = 1 meter on average
@@ -152,4 +160,7 @@ public class SensorForeground extends Service {
     public static int getStepCount(){
         return steps;
     }
+
+
+
 }

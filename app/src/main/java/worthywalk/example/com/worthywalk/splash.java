@@ -14,6 +14,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.gson.Gson;
 
 import androidx.appcompat.app.AppCompatActivity;
+import worthywalk.example.com.worthywalk.Models.User;
 
 public class splash extends AppCompatActivity {
 
@@ -63,7 +64,7 @@ User user;
 
 
 
-                    }else if(userjson=="a") {
+                    }else if(fuser!=null &&userjson=="a") {
                                 data=false;
                                 Intent mainIntent = new Intent(splash.this,register.class);
                                 splash.this.startActivity(mainIntent);

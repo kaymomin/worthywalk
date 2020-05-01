@@ -20,6 +20,7 @@ public class Signup extends AppCompatActivity {
     FloatingActionButton next;
     EditText emailid,password1,password2;
     FirebaseAuth mAuth;
+    String Email="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,30 +48,34 @@ public class Signup extends AppCompatActivity {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (emailid.getText().toString().trim()==null|| password1.getText().toString()==null||password2.getText().toString()==null){
+                if (emailid.getText().toString().isEmpty() || password1.getText().toString().isEmpty() || password2.getText().toString().isEmpty()){
                     Toast.makeText(Signup.this, "Error Please enter the credentials", Toast.LENGTH_SHORT).show();
-                } else if(emailid.getText().toString().matches("^([a-zA-z]+)[0-9]*@[a-zA-z]+.com")) {
+                } else{
+
                     String id,p1,p2;
                     id=emailid.getText().toString().trim();
                     p1=password1.getText().toString().trim();
                     p2=password2.getText().toString().trim();
                     signUp(id,p1,p2);
-                }else {
-                    emailid.setError("Invalid email");
-                }
+
+
+                    }
+
 
 
             }
         });
     }
-    public void signUp(String id,String p1,String p2){
+    public void signUp(final String id, String p1, String p2){
         if(p1.equals(p2)){
             mAuth.createUserWithEmailAndPassword(id,p1).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if(task.isSuccessful()) {
+                        Email=id;
                         Intent i=new Intent(Signup.this,register.class);
                         i.putExtra("AfterLogin","false");
+                        i.putExtra("Email",Email);
                         startActivity(i);
 //                        overridePendingTransition(R.anim.slide_in,R.anim.slide_out);
                         finish();
