@@ -14,11 +14,17 @@ Worthy Walk is a smart phone application that provides its users a platform to a
 
 Note: Since the application is developed on Android Studio, you would need an Android SDK and Android Studio to run the project.
 
-1. Clone the project in to your Desktop and open the project on android studio.
+1. [Clone this Repo](https://github.com/moazzammmaqsood/worthywalk) in to your Desktop and open the project on android studio.
 
 2. Connect an emulator or debug enabled phone with the PC.
 
 3. Run the code!
+
+OR
+
+Download the App from [Play Store](https://play.google.com/store/apps/details?id=worthywalk.example.com.worthywalk&fbclid=IwAR2Ba9o4z1MHh6XxvxOse-Kedc2g8EIySpPAcDd7W_0EN7pvEpH1sVEoiwg)
+
+![ww](https://user-images.githubusercontent.com/44579545/80862145-2b6b8c00-8c8c-11ea-8d26-1201e8a55668.png)
 
 ## Products and Platforms
 Android: For developing application for android mobiles.
@@ -34,3 +40,5 @@ Google Analytics: To keep track of mobile activities.
 Crashlytics: To track the crashes users might face and could fix it.
 
 Firebase Test Labs: To test application.
+
+
